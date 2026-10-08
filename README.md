@@ -46,17 +46,29 @@ Renaming a scene automatically updates every [[link]] that points at it — all 
 4 · Node types
 Every scene is one of 12 types. Types are defaults and looks — all nodes share the same fields, and only Play mode treats them differently.
 Type	Use
+
 Narrative	The workhorse — prose scenes with exits
+
 ● Player	Narrator text shown to the reader; inline [[links]] become plain text, so onward paths are drawn connections · has the ⚡ Action sub-type
+
 💬 NPC	Character dialogue — pick a speaker from the library; their color tints the header and play page
+
 ⊞ Choice	Decision hub — each choice leads to another scene
+
 ◈ Hub	Pure branching/merging point — many links in, many out; act labels (e.g. INCITING INCIDENT) show as styled chips while its body is empty
+
 ⚡ Action	Modifies state — e.g. gold += 10, or rolls dice into a variable (roll = 2d6 🎲) — then follows the first exit
+
 ⚙ Condition	if/else branch — set an expression like has_key == true, then pick where each outcome goes
+
 ↪ Jump	Continue at another scene — by tag, id or exact title (the inspector's “jump by name” field takes #tag or a title, and renaming a scene rewrites title-based jump targets). Chapter transitions, fast-forwards
+
 ◆ Ending	Terminal outcome — Play mode marks it "The End"
+
 ✎ Note	Author-only comments — kept out of the word count and the reader flow
+
 ▮ Text	Ordinary free-form prose — [[links]] work as choices, same as Narrative
+
 ▤ Exposition	Narrator descriptions, stage directions, environmental storytelling — [[links]] work as choices; assign a Narrative Voice to tint and label the scene · has the ⚔ Encounter sub-type
 
 Type accents. Every card carries a structural cue: ✎ Note looks like a sticky amber Post-it (slightly tilted — it straightens when you hover it), ● NPC and ◈ Choice have a 4px left stripe in the speaker's / type color, and ▶ Player has a 4px top stripe plus a serif prose body that mirrors Play mode. A custom color — or an NPC's speaker color — re-tints the stripe automatically.
@@ -115,7 +127,7 @@ Falling action, Resolution, Denouement, Backstory) or free text. A colored dot p
 • Choice tones 🎨 — every choice row also has an optional tone field: a free-text word for the option's personality (kind, warm, witty, bold, threat, cold — or any word, which gets its own stable color). It colors a dot on the Play-mode button and on the dashed arrow, so a branch's feel reads at a glance, Broken-Roads-moral-compass style; empty = no dot
 
 
-• Location — where the scene takes place; picking a 📍 library location tints its chip and the Play-mode line
+• _Location_ signifies where the scene takes place; picking a 📍 library location tints its chip and the Play-mode line
 
 • Color — custom override of the type default, right below Location
 
@@ -268,7 +280,9 @@ Right-click a library entry for ✎ Rename (F2) — focuses its name field, ⧉ 
 📂 Open / 💾 Save / 💾⭳ Save as… work directly with a project file anywhere on your disk (Chromium browsers, via the File System Access API): Open picks a .loomlight.json, Save writes straight back into the opened file, and Save-as opens the OS dialog with a pre-filled name you can rename before choosing the folder. The opened file is remembered across sessions; in Firefox/Safari (and the preview sandbox) the buttons gracefully fall back to downloads and the import picker. ⇩ Export stays available for the other formats:
 Format	File	What it's for
 Project .json	story.loomlight.json	Full backup — round-trips perfectly via Import
-Playable story .html	story.html	A single self-contained file with the play engine baked in — hand it to readers, host it anywhere, no Loomlight needed
+Playable story .html	story.html
+
+A single self-contained file with the play engine baked in — hand it to readers, host it anywhere, no Loomlight needed
 Outline .md	story.md	Pandoc/Obsidian-friendly Markdown outline of the story tree
 Twee	story.twee	Twine / Tweego format — node types, positions, colors, scene characters and locations, speakers, voices, sub-types and field values are preserved as passage metadata (:: headers), with scene tags exported as Twee 3 tag blocks ([a b c], space-separated — the first tag is the primary jump/choice slug, the rest are free labels, and all of them read back on import).
 
