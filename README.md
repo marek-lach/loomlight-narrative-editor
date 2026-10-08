@@ -5,9 +5,10 @@ A user can outline their story as a map of connected scenes, enrich it with a pe
 Everything runs locally in your browser. No install, no server, no account, no cloud — your story never leaves your machine.
 
 1 · Setup
-    1. Get the file — Loomlight is one self-contained .html file (e.g. loomlight.html).
-    2. Open it — double-click it, or open it via your browser's File → Open. Any modern browser works (Chrome, Edge, Firefox, Safari).
-    3. That's it. A small sample story loads on first run so you can explore immediately. Edit or delete it and start your own.
+ 
+ 1. Get the file — Loomlight is one self-contained .html file (e.g. loomlight.html).
+ 2. Open it — double-click it, or open it via your browser's File → Open. Any modern browser works (Chrome, Edge, Firefox, Safari).
+ 3. That's it. A small sample story loads on first run so you can explore immediately. Edit or delete it and start your own.
 **Where is my data? — and how is it protected? **Your story **autosaves to your browser's local storage first **after every change — the ✓ autosave chip confirms each save; it warns ⚠ autosave off if storage is blocked or full, and shows ⏸ autosave paused while another tab owns the session. Writes are debounced (~300 ms), so a burst of typing costs one save, not one per keystroke; closing or hiding the tab always flushes immediately.
     • Versioned save format — saves carry a format version (v2), so future Loomlight updates can migrate old saves instead of losing them.
     • Safety backup ring — every 20th save, a story-only snapshot rotates into five backup slots (loomlight.backup.1 … .5). If the primary save (loomlight.project.v1) is ever unreadable, Loomlight recovers your story from the newest backup and re-saves it automatically.
@@ -67,67 +68,118 @@ The node card shows a sub-type chip (⚔ Encounter / ⚡ Action) whose tooltip l
 
 5 · Common fields & the inspector
 Select a scene to edit it in the inspector:
-    • Title — the scene headline
-    • Tags — one or more single-word slugs, space-separated (e.g. ch3-tavern dream), exported as a Twee 3 tag block [ch3-tavern dream]. The first tag is the primary: unique per story and used as a jump/choice target so links survive retitles; the tags after it are free grouping labels. All of them show as #chips on the card head and in the Timeline, and the Sheet view's Tag column edits the whole space-separated list
-    • Cover image — optional scene art: an image URL (hosted, keeps the project file small) or a local file picked via 📁 (embedded as a data:URI — fine for a few, heavy for many). Renders as a banner under the scene title on the map, a backdrop in Play mode and exported HTML, and a thumbnail in the Arc & Timeline views. Never ships into the playable text; remove with ✕. A single-file app can't bundle binaries, so images live as URLs/data-URIs inside the JSON.
-    • Arc — a named scene group picked from a dropdown that sits right below the Markdown text; scenes sharing an arc are listed together in the 🗺 Arcs sidebar tab (in timeline order) and carry a colored ⌒ chip on cards and in the arc view. Create, rename or delete arcs in that tab — and optionally give an arc an owning character (their color tints its dot), turning it into that character's personal arc
+
+• Title — the scene headline
+
+• Tags — one or more single-word slugs, space-separated (e.g. ch3-tavern dream), exported as a Twee 3 tag block [ch3-tavern dream]. The first tag is the primary: unique per story and used as a jump/choice target so links survive retitles; the tags after it are free grouping labels. All of them show as #chips on the card head and in the Timeline, and the Sheet view's Tag column edits the whole space-separated list
+
+• Cover image — optional scene art: an image URL (hosted, keeps the project file small) or a local file picked via 📁 (embedded as a data:URI — fine for a few, heavy for many). Renders as a banner under the scene title on the map, a backdrop in Play mode and exported HTML, and a thumbnail in the Arc & Timeline views. Never ships into the playable text; remove with ✕.
+    
+A single-file app can't bundle binaries, so images live as URLs/data-URIs inside the JSON.
+    
+• Arc — a named scene group picked from a drop-down that sits right below the Markdown text; scenes sharing an arc are listed together in the 🗺 Arcs sidebar tab (in timeline order) and carry a colored ⌒ chip on cards and in the arc view. Create, rename or delete arcs in that tab — and optionally give an arc an owning character (their color tints its dot), turning it into that character's personal arc
+
 ⌒ Arc frames — grouping containers on the map
 Inspired by how code editors frame related blocks on one canvas: every arc with two or more scenes is wrapped in a tinted frame directly on the Graph view, so the map reads structurally at a glance instead of only via ⌒ chips.
-    • The frame is tinted and titled with the arc's name, scene count and color (the owning character's color, if the arc has one).
-    • Drag the frame (its border or title bar) to move all of its scenes as a group — one undo step, edges follow live, snap-to-grid respected.
-    • － collapses the arc into a compact pill (its scenes tuck away, their edges hide — decluttering big maps); ＋ expands it back. Collapsed arcs stay collapsed across reloads; jump to one of its scenes from anywhere (sidebar, search, Char view) and it auto-expands.
-    • The ⌒ Frames toolbar button hides or shows all frames; frames render behind nodes and never intercept node clicks, edge clicks or ports.
-    • Collapsible per arc also from the 🗺 Arcs sidebar tab (the －/＋ button on each arc row).
-    • Body — Markdown prose (the authoring surface; see §8)
-    • Character — who the scene belongs to; sits directly below the Markdown text, and matching a library character tints the header in their color — a Character details row underneath edits their location & temperature
-    • Date / time — free-form; the Timeline view sorts by it (years 1800–2099 auto-detected)
-    • Beat — the story beat on the classic dramatic arc: a dropdown of canonical beats (Opening, Inciting incident, Rising action, Midpoint, Crisis, Climax, Falling action, Resolution, Denouement, Backstory) or free text. A colored dot previews it next to the field, and the beat shows as a color-coded chip on the card foot (colored by the canonical palette — custom beats get a stable generated color). The Sheet view's Beat column uses the same dropdown
-    • Entry requirement ⚔ — optional condition on any scene: the reader can only arrive while it holds. Every entrance — choices, [[links]], drawn connections, jumps — is gated at once, and the card carries a ⚔ chip. Unmet, the choice shows locked with its requirement instead of vanishing; the Reading order view prints ⚔ requires: on the page. Same syntax as connection conditions; empty = open to all
-    • Choices — Player · NPC · Choice · Hub · Action · Condition · Text · Exposition all get a choices list, rendered right below the Markdown text (after Arc, above Character): each row is a label, a target (tag, id or exact title) and an optional ⚙ condition (the choice is offered only while it holds), drawn as dashed arrows and offered in Play mode before map connections
-    • Choice tones 🎨 — every choice row also has an optional tone field: a free-text word for the option's personality (kind, warm, witty, bold, threat, cold — or any word, which gets its own stable color). It colors a dot on the Play-mode button and on the dashed arrow, so a branch's feel reads at a glance, Broken-Roads-moral-compass style; empty = no dot
-    • Location — where the scene takes place; picking a 📍 library location tints its chip and the Play-mode line
-    • Color — custom override of the type default, right below Location
-    • Scene fields — beat, act, pov, location, tension, status, chapter — editable in the Sheet view; they drive the Timeline / Arc / Beat / Stats views. location links a scene to a 📍 library location (also set in the Inspector): its color tints the card's 📍 chip and the Play-mode line, and renaming the location follows the scene. Location fields (scene Inspector, character Inspector / library panel, new-character form) show a suggestion dropdown of existing locations and auto-add committed new names to the 📍 Locations library
-    • Narrative Voice (Exposition) — pick or quick-add a 🎙 voice; its color tints the card and labels the scene in Play mode
-    • Sub-type + Tags (Player / Exposition) — see §4
+
+• The frame is tinted and titled with the arc's name, scene count and color (the owning character's color, if the arc has one).
+
+• Drag the frame (its border or title bar) to move all of its scenes as a group — one undo step, edges follow live, snap-to-grid respected.
+
+• － collapses the arc into a compact pill (its scenes tuck away, their edges hide — decluttering big maps); ＋ expands it back. Collapsed arcs stay collapsed across reloads; jump to one of its scenes from anywhere (sidebar, search, Char view) and it auto-expands.
+
+• The ⌒ Frames toolbar button hides or shows all frames; frames render behind nodes and never intercept node clicks, edge clicks or ports.
+
+• Collapsible per arc also from the 🗺 Arcs sidebar tab (the －/＋ button on each arc row).
+
+• Body — Markdown prose (the authoring surface; see §8)
+
+• Character — who the scene belongs to; sits directly below the Markdown text, and matching a library character tints the header in their color — a 
+
+Character details row underneath edits their location & temperature
+• Date / time — free-form; the Timeline view sorts by it (years 1800–2099 auto-detected)
+
+• Beat — the story beat on the classic dramatic arc: a dropdown of canonical beats (Opening, Inciting incident, Rising action, Midpoint, Crisis, Climax, 
+
+Falling action, Resolution, Denouement, Backstory) or free text. A colored dot previews it next to the field, and the beat shows as a color-coded chip on the card foot (colored by the canonical palette — custom beats get a stable generated color). The Sheet view's Beat column uses the same dropdown
+    
+• Entry requirement ⚔ — optional condition on any scene: the reader can only arrive while it holds. Every entrance — choices, [[links]], drawn connections, jumps — is gated at once, and the card carries a ⚔ chip. Unmet, the choice shows locked with its requirement instead of vanishing; the Reading order view prints ⚔ requires: on the page. Same syntax as connection conditions; empty = open to all
+    
+• Choices — Player · NPC · Choice · Hub · Action · Condition · Text · Exposition all get a choices list, rendered right below the Markdown text (after Arc, above Character): each row is a label, a target (tag, id or exact title) and an optional ⚙ condition (the choice is offered only while it holds), drawn as dashed arrows and offered in Play mode before map connections
+
+• Choice tones 🎨 — every choice row also has an optional tone field: a free-text word for the option's personality (kind, warm, witty, bold, threat, cold — or any word, which gets its own stable color). It colors a dot on the Play-mode button and on the dashed arrow, so a branch's feel reads at a glance, Broken-Roads-moral-compass style; empty = no dot
+
+
+• Location — where the scene takes place; picking a 📍 library location tints its chip and the Play-mode line
+
+• Color — custom override of the type default, right below Location
+
+• Scene fields — beat, act, pov, location, tension, status, chapter — editable in the Sheet view; they drive the Timeline / Arc / Beat / Stats views. location links a scene to a 📍 library location (also set in the Inspector): its color tints the card's 📍 chip and the Play-mode line, and renaming the location follows the scene. Location fields (scene Inspector, character Inspector / library panel, new-character form) show a suggestion dropdown of existing locations and auto-add committed new names to the 📍 Locations library
+
+• Narrative Voice (Exposition) — pick or quick-add a 🎙 voice; its color tints the card and labels the scene in Play mode
+
+• Sub-type + Tags (Player / Exposition) — see §4
+
 Connections can each carry a Markdown label (double-click the edge) and an optional condition — the reader only gets that path while the condition holds. Variable conditions show a ⚙ badge on their chip; @Character Attribute skill checks (e.g. @The Doorkeeper Patience >= 7) show a ⚔ badge and read the character's attribute grid; dice conditions (e.g. playerStr > d20) show a 🎲 badge and re-roll on every evaluation. Two optional play-mode flags (per connection, in the inspector) complement conditions:
-    • ↻ Persist — the choice stays available after the reader takes it, marked “↻ visited”. Meant for “exit to lobby” navigation links.
-    • ⚡ Once — the choice fires only once per playthrough, then hides itself. Meant for one-shot secrets.
+
+• ↻ Persist — the choice stays available after the reader takes it, marked “↻ visited”. Meant for “exit to lobby” navigation links.
+
+• ⚡ Once — the choice fires only once per playthrough, then hides itself. Meant for one-shot secrets.
+
 Inline [[links]] can be gated in the prose itself: append {{when:cond}} inside the brackets — [[Speak kindly->Target {{when:has_key}}]] is offered as a choice only while the condition holds (same syntax as connection conditions, incl. ⚔ skill checks). Author views mark gated links with a dashed ⚔ chip, and renaming the target scene rewrites the link while keeping its gate.
 Both reset on every new playthrough, show as ↻ / ⚡ badges on the map chip, and round-trip through .json export/import. When several scenes are selected, the inspector becomes a batch panel — apply one color to all of them, delete, or clear the selection.
 
 6 · The Library 📚
 The persistent database for worldbuilding: independent of any scene, it travels with saves and exports.
 Category	What it holds
+
 💬 Characters	Name, color, role, portrait initials, description, goals, flaw, abilities, an attribute grid (per-character stats like Courage: 8, readable from any condition as @Name Attribute), traits (cross-character tags — see below), a Main / Secondary / Casual importance category, and an Encounter field that can @mention other entities
-📍 Locations	Places — name, color, free-form links to other places
-🎒 Items	Player-inventory objects — the present flag (default on) controls whether {{when:Item name}} blocks see the item; untick to remove it from the starting inventory
-🔢 Variables	Numeric or string values seeded into every playthrough — they drive Condition nodes, connection conditions, and {{when:}} blocks. Each variable also carries a human label (what it means, shown in the library) and an optional group ("Main story", "Side quests", "Secrets"…): grouped variables appear under their own folder headers in the library, with the rest listed directly below the section head. Labels and groups are authoring aids only — play logic always reads the technical name. A row of type chips (All · Number · Text · Boolean · Empty, with live counts) filters the variable list by inferred value type
-🌍 Worldbuilding	Free-form named entries (history, geography, culture, magic…) with renameable, reorderable name/value field pairs
-🎙 Narrative Voices	The "who is telling" — narrators, chroniclers, in-world documents. Assign one in an Exposition scene; its color tints the card and labels the scene in Play mode
+
+📍 Locations - Places — name, color, free-form links to other places
+
+🎒 Items - Player-inventory objects — the present flag (default on) controls whether {{when:Item name}} blocks see the item; untick to remove it from the starting inventory
+
+🔢 Variables - Numeric or string values seeded into every playthrough — they drive Condition nodes, connection conditions, and {{when:}} blocks. Each variable also carries a human label (what it means, shown in the library) and an optional group ("Main story", "Side quests", "Secrets"…): grouped variables appear under their own folder headers in the library, with the rest listed directly below the section head. Labels and groups are authoring aids only — play logic always reads the technical name. A row of type chips (All · Number · Text · Boolean · Empty, with live counts) filters the variable list by inferred value type
+
+🌍 Worldbuilding - Free-form named entries (history, geography, culture, magic…) with renameable, reorderable name/value field pairs
+
+🎙 Narrative Voices - The "who is telling" — narrators, chroniclers, in-world documents. Assign one in an Exposition scene; its color tints the card and labels the scene in Play mode
 
 Select any entry to edit it in the inspector — or right-click it for Rename (F2), ⧉ Duplicate and ✕ Delete (see §10). The 📇 Char view prints every character profile as a card — handy for TTRPG session handouts.
 
-7 · Ten views — one story
+7 · Ten views — to see one story
 Switch with the toolbar tabs or their keys. All views read the same scene fields — every change applies everywhere.
+
 View	Key	What it shows
 ▦ Graph	G	The free-form canvas (default). Arcs with 2+ scenes are wrapped in a tinted, titled frame (see § Arc frames)
+
 ⏱ Timeline	T	Chronology rows auto-arranged into eras by year; ↑/↓ buttons reorder within a year
+
 ⊞ Sheet	S	Every field of every scene in one spreadsheet — click any cell to edit; ⇩ CSV / ⇩ JSON export the rows
+
 ◫ Outline	O	Radial mind-map of the library — characters inner ring, locations/items/variables outer; drag cards, positions persist
+
 ▤ Arc	A	Chapters × scenes on a beat-colored strip with detail cards
+
 ▥ Beat	B	Per-scene table: # / Title / Beat / Act / POV / Date / Tension (0–10 bar) / Words / Status
+
 📇 Char	C	Printable character profile cards, two per row — each card lists the scenes the character takes part in (speaker, POV, or @mention), clickable to jump to the map
+
 📜 Script	R	A linear, read-only read of the whole story in timeline order — body text, spoken dialogue cues, screenplay quotes, choice lists (▸ label → target) and Go to: jumps, all in one scroll. Click any scene card to open it on the map
+
 📖 Reading order	E	The story as the reader will meet it — a numbered, gamebook-style walk from the start scene through every exit (choices, connections, [[links]], jumps, condition branches); each page cross-references the page its exits lead to, and scenes no exit reaches are listed at the bottom. ▶ Run plays from the start; ⇅ Re-sort restamps the timeline order with this reading order
+
 📊 Stats	P	Summary cards, cumulative words-over-time line chart, words-per-scene bar chart
 
 🏷 Traits — a cross-character vocabulary
 Besides the per-character attribute grid, every character has a Traits list in the inspector: free-text tags like shy, energetic, loyal, angry. Traits form a shared vocabulary across the whole character cast — typing the same trait on several characters automatically links them for easier filtering:
-    • The 📇 Char view shows a Trait groups bar above the cards: every trait used anywhere, with the number of characters carrying it.
-    • Click a tag to filter the profile grid down to everyone who shares that trait (matching is case-insensitive, so Shy and shy group together); click it again — or the highlighted tag — to clear.
-    • Each card also shows its own trait chips; clicking one filters by that trait straight from the card.
-    • The inspector's trait input offers auto complete from traits already used by other characters, keeping spelling consistent; Enter or ＋ adds, clicking a chip removes it.
+
+• The 📇 Char view shows a Trait groups bar above the cards: every trait used anywhere, with the number of characters carrying it.
+
+• Click a tag to filter the profile grid down to everyone who shares that trait (matching is case-insensitive, so Shy and shy group together); click it again — or the highlighted tag — to clear.
+• Each card also shows its own trait chips; clicking one filters by that trait straight from the card.
+
+• The inspector's trait input offers auto complete from traits already used by other characters, keeping spelling consistent; Enter or ＋ adds, clicking a chip removes it.
 Attributes stay exactly what they were — a private label → value stat table per character. Traits are the associative layer: free words that group characters instead of measuring them.
 
 8 · Writing syntax
@@ -205,6 +257,7 @@ Library right-click menu
 Right-click a library entry for ✎ Rename (F2) — focuses its name field, ⧉ Duplicate — a deep copy with a fresh id and " (copy)" name, and ✕ Delete (press twice to confirm, matching node deletes). Right-click a section header (e.g. Characters) to add a new entry of that kind. All three actions integrate with undo.
 
 11 · Saving, export & import
+
 📂 Open / 💾 Save / 💾⭳ Save as… work directly with a project file anywhere on your disk (Chromium browsers, via the File System Access API): Open picks a .loomlight.json, Save writes straight back into the opened file, and Save-as opens the OS dialog with a pre-filled name you can rename before choosing the folder. The opened file is remembered across sessions; in Firefox/Safari (and the preview sandbox) the buttons gracefully fall back to downloads and the import picker. ⇩ Export stays available for the other formats:
 Format	File	What it's for
 Project .json	story.loomlight.json	Full backup — round-trips perfectly via Import
