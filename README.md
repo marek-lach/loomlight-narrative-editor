@@ -1,7 +1,9 @@
 # 🕯️ Loomlight — A graphical branching narrative editor, compatible with [Twine](https://github.com/klembot/twinejs)'s Twee format
-Loomlight is a single-file, browser-based, local-only editor for writing, mapping out, and playing branching narrative stories: interactive fiction, choose-your-own-adventure stories, visual-novel plots, TTRPG campaign arcs, or any story that forks.
+
+Loomlight is a single-file, browser-based editor for writing, mapping out, and playing branching narrative stories: interactive fiction, choose-your-own-adventure stories, visual-novel plots, TTRPG campaign arcs, or any story that forks.
 A user can outline their story as a map of connected scenes, enrich it with a persistent worldbuilding library (characters, places, items, variables, lore, narrative voices), then click Play to walk it exactly as a reader would — with live variables, conditions, and inventory.
 Everything runs locally in your browser. No install, no server, no account, no cloud — your story never leaves your machine.
+
 1 · Setup
     1. Get the file — Loomlight is one self-contained .html file (e.g. loomlight.html).
     2. Open it — double-click it, or open it via your browser's File → Open. Any modern browser works (Chrome, Edge, Firefox, Safari).
@@ -13,6 +15,7 @@ Everything runs locally in your browser. No install, no server, no account, no c
     • Save on hide — changes persist not only on exit, but the moment the tab is hidden (mobile browsers can kill tabs without warning).
 Layout, zoom level, and the snap toggle are restored on reload (theme lives in loomlight.theme). Local storage is still tied to this browser on this machine — export a .json backup regularly, especially before switching browsers or clearing site data.
 Recommended rhythm: sketch → ✓ Check → play-test → export.
+
 2 · The workspace at a glance
 Area	What it does
 Toolbar (top)	Story title & author, undo/redo, ＋ Node, ✧ Tidy (auto-layout), ✓ Check, ▶ Play, ⇩ Export, ⇧ Import, 📂 Open, 💾 Save, 💾⭳ Save as…, ? Help, view tabs ▦⏱⊞◫▤▥📇📊, ◐ theme, zoom controls
@@ -36,6 +39,7 @@ Ctrl/Shift + click nodes	Multi-select — build a selection of any size, then dr
 Shift + drag empty space	Rubber-band selection box (nodes light up as the box covers them) — Ctrl + drag extends the current selection instead of replacing it
 
 Renaming a scene automatically updates every [[link]] that points at it — all link syntaxes ([[Target]], [[label->Target]], [[Target<-label]], [[label|Target]]) are rewritten in every body that references the old title.
+
 4 · Node types
 Every scene is one of 12 types. Types are defaults and looks — all nodes share the same fields, and only Play mode treats them differently.
 Type	Use
@@ -60,6 +64,7 @@ Sub-type	Extra fields	Default tag
 ⚔ Encounter (on Exposition)	Threat — None / Low / Moderate / High (defaults Low) · Exploration focus — free text (what the reader can find, notice, or learn) · Reward — free text (discovery, loot, insight, ally)	exploration
 
 The node card shows a sub-type chip (⚔ Encounter / ⚡ Action) whose tooltip lists the current field values, and tags appear as chips on the card foot. Tags and field values persist with the save and round-trip through Twee export/import — as passage metadata and Twine-style [tags] alike.
+
 5 · Common fields & the inspector
 Select a scene to edit it in the inspector:
     • Title — the scene headline
@@ -90,6 +95,7 @@ Connections can each carry a Markdown label (double-click the edge) and an optio
     • ⚡ Once — the choice fires only once per playthrough, then hides itself. Meant for one-shot secrets.
 Inline [[links]] can be gated in the prose itself: append {{when:cond}} inside the brackets — [[Speak kindly->Target {{when:has_key}}]] is offered as a choice only while the condition holds (same syntax as connection conditions, incl. ⚔ skill checks). Author views mark gated links with a dashed ⚔ chip, and renaming the target scene rewrites the link while keeping its gate.
 Both reset on every new playthrough, show as ↻ / ⚡ badges on the map chip, and round-trip through .json export/import. When several scenes are selected, the inspector becomes a batch panel — apply one color to all of them, delete, or clear the selection.
+
 6 · The Library 📚
 The persistent database for worldbuilding: independent of any scene, it travels with saves and exports.
 Category	What it holds
@@ -101,6 +107,7 @@ Category	What it holds
 🎙 Narrative Voices	The "who is telling" — narrators, chroniclers, in-world documents. Assign one in an Exposition scene; its color tints the card and labels the scene in Play mode
 
 Select any entry to edit it in the inspector — or right-click it for Rename (F2), ⧉ Duplicate and ✕ Delete (see §10). The 📇 Char view prints every character profile as a card — handy for TTRPG session handouts.
+
 7 · Ten views — one story
 Switch with the toolbar tabs or their keys. All views read the same scene fields — every change applies everywhere.
 View	Key	What it shows
@@ -122,6 +129,7 @@ Besides the per-character attribute grid, every character has a Traits list in t
     • Each card also shows its own trait chips; clicking one filters by that trait straight from the card.
     • The inspector's trait input offers auto complete from traits already used by other characters, keeping spelling consistent; Enter or ＋ adds, clicking a chip removes it.
 Attributes stay exactly what they were — a private label → value stat table per character. Traits are the associative layer: free words that group characters instead of measuring them.
+
 8 · Writing syntax
 Markdown
 Syntax	Result
@@ -163,6 +171,7 @@ Screenplay formatting
 Wrap a block in <screenplay>…</screenplay> (e.g. at the top of an NPC body) to render it as formatted screenplay — INT. / EXT. slug lines are bolded.
 Quote-style dialogue
 Wrap a line in triple quotes to mark spoken dialogue — '''KILLER: Shana?'''. The text before the first colon becomes the speaker, shown as a small uppercase accent above the quote; when the name matches a library character, the accent is tinted with that character's color. A colonless line ('''Is anyone there?''') renders as a bare quote. Consecutive quote lines group into one block, and the usual inline syntax — [[links]], {{when:}}, {{said:}}, @mentions — works inside the spoken text.
+
 9 · Play mode ▶
 Press ▶ Play or Ctrl+P to start from the story's start node (set one via the right-click context menu — Play won't start without it). Right-click any node to play from it instead.
     • Choices appear as clickable links; both [[text links]] and drawn connections are offered (list choices first). A ↻ persist connection stays available after you take it (marked “↻ visited”, dashed border); a ⚡ once connection disappears after its single use. Choices into a scene whose ⚔ entry requirement fails render locked with the requirement shown; a gated scene's own page prints ⚔ requires: … with its met status
@@ -172,6 +181,7 @@ Press ▶ Play or Ctrl+P to start from the story's start node (set one via the r
     • Screenplay dressing — each page opens with a SCENE slug (location + date in caps, e.g. SCENE: THE HALL — SPRING 1893, tinted with the location's library color) and the scene's character appears as a colored name pill above the prose. The exported HTML twin renders the same slug and pill
     • ⚡ Action nodes silently apply effects; ⚙ Condition nodes route by their expression; ◆ Endings mark "The End"; ↻ Restart clears variables, visited flags and choice echoes
     • Close with the ✕ button or Esc
+
 10 · The shortcuts
 Key	Action
 N	New node
@@ -193,6 +203,7 @@ Esc	Close, in cascade: context menu → cancel link draft → close modal → cl
 While typing in any input, single-letter shortcuts are suspended.
 Library right-click menu
 Right-click a library entry for ✎ Rename (F2) — focuses its name field, ⧉ Duplicate — a deep copy with a fresh id and " (copy)" name, and ✕ Delete (press twice to confirm, matching node deletes). Right-click a section header (e.g. Characters) to add a new entry of that kind. All three actions integrate with undo.
+
 11 · Saving, export & import
 📂 Open / 💾 Save / 💾⭳ Save as… work directly with a project file anywhere on your disk (Chromium browsers, via the File System Access API): Open picks a .loomlight.json, Save writes straight back into the opened file, and Save-as opens the OS dialog with a pre-filled name you can rename before choosing the folder. The opened file is remembered across sessions; in Firefox/Safari (and the preview sandbox) the buttons gracefully fall back to downloads and the import picker. ⇩ Export stays available for the other formats:
 Format	File	What it's for
