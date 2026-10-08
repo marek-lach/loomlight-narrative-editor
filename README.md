@@ -22,7 +22,12 @@ Recommended rhythm: sketch → ✓ Check → play-test → export.
 2 · The workspace at a glance
 Area	What it does
 Toolbar (top)	Story title & author, undo/redo, ＋ Node, ✧ Tidy (auto-layout), ✓ Check, ▶ Play, ⇩ Export, ⇧ Import, 📂 Open, 💾 Save, 💾⭳ Save as…, ? Help, view tabs ▦⏱⊞◫▤▥📇📊, ◐ theme, zoom controls
-Sidebar (left)	☰ Scenes — every scene in the story, searchable · 📚 Library — the worldbuilding database · 🗺 Arcs — named scene groups, each listed in timeline order, with add / rename / delete and an optional owning character
+
+Sidebar (left)	☰ Scenes — every scene in the story, searchable · 
+
+📚 Library — the worldbuilding database · 
+
+🗺 Arcs — named scene groups, each listed in timeline order, with add / rename / delete and an optional owning character
 Map (center)	The free-form canvas: scene cards, arrows, and labels
 Inspector (right)	Fields of whatever is selected — scene, library entry, or connection
 Status bar (bottom)	Node/link counts, word count, autosave chip
