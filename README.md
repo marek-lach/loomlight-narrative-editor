@@ -60,8 +60,11 @@ Narrative	The workhorse — prose scenes with exits
 Type accents. Every card carries a structural cue: ✎ Note looks like a sticky amber Post-it (slightly tilted — it straightens when you hover it), ● NPC and ◈ Choice have a 4px left stripe in the speaker's / type color, and ▶ Player has a 4px top stripe plus a serif prose body that mirrors Play mode. A custom color — or an NPC's speaker color — re-tints the stripe automatically.
 Sub-types — per-type extra fields
 Some types offer an optional sub-type in the inspector: a template that attaches extra fields (pre-filled with defaults) and a default tag, both fully rewritable. Picking one never overwrites values you've already entered.
+
 Sub-type	Extra fields	Default tag
+
 ⚡ Action (on Player)	Danger level — Low / Moderate / High / Deadly (defaults Moderate) · Stakes — free text (what the player risks) · Opposition — free text (who or what stands in the way)	danger
+
 ⚔ Encounter (on Exposition)	Threat — None / Low / Moderate / High (defaults Low) · Exploration focus — free text (what the reader can find, notice, or learn) · Reward — free text (discovery, loot, insight, ally)	exploration
 
 The node card shows a sub-type chip (⚔ Encounter / ⚡ Action) whose tooltip lists the current field values, and tags appear as chips on the card foot. Tags and field values persist with the save and round-trip through Twee export/import — as passage metadata and Twine-style [tags] alike.
@@ -127,6 +130,7 @@ Connections can each carry a Markdown label (double-click the edge) and an optio
 • ⚡ Once — the choice fires only once per playthrough, then hides itself. Meant for one-shot secrets.
 
 Inline [[links]] can be gated in the prose itself: append {{when:cond}} inside the brackets — [[Speak kindly->Target {{when:has_key}}]] is offered as a choice only while the condition holds (same syntax as connection conditions, incl. ⚔ skill checks). Author views mark gated links with a dashed ⚔ chip, and renaming the target scene rewrites the link while keeping its gate.
+
 Both reset on every new playthrough, show as ↻ / ⚡ badges on the map chip, and round-trip through .json export/import. When several scenes are selected, the inspector becomes a batch panel — apply one color to all of them, delete, or clear the selection.
 
 6 · The Library 📚
@@ -167,7 +171,7 @@ View	Key	What it shows
 
 📜 Script	R	A linear, read-only read of the whole story in timeline order — body text, spoken dialogue cues, screenplay quotes, choice lists (▸ label → target) and Go to: jumps, all in one scroll. Click any scene card to open it on the map
 
-📖 Reading order	E	The story as the reader will meet it — a numbered, gamebook-style walk from the start scene through every exit (choices, connections, [[links]], jumps, condition branches); each page cross-references the page its exits lead to, and scenes no exit reaches are listed at the bottom. ▶ Run plays from the start; ⇅ Re-sort restamps the timeline order with this reading order
+📖 Reading order	E	The story as the reader will meet it — a numbered, gamebook-style walk from the start scene, through every exit (choices, connections, [[links]], jumps, condition branches); each page cross-references the page its exits lead to, and scenes no exit reaches are listed at the bottom. ▶ Run plays from the start; ⇅ Re-sort restamps the timeline order with this reading order
 
 📊 Stats	P	Summary cards, cumulative words-over-time line chart, words-per-scene bar chart
 
@@ -208,6 +212,7 @@ Syntax	Result
 {{said:tag}} / {{said:tag\|fallback}}	Inventory echo — prints the label of the choice the reader took to reach that scene, looked up by its tag, id or title; until that choice is taken, the optional \|fallback text shows instead (author views mark the token with an amber dashed outline)
 
 Story variables (Action & Condition nodes)
+
 Syntax	Result
 gold += 10 / gold -= 5	Add / subtract (concatenates for text)
 has_key = true · set hp = 3	Assign — true, false, numbers, "quoted text"
@@ -263,19 +268,30 @@ Format	File	What it's for
 Project .json	story.loomlight.json	Full backup — round-trips perfectly via Import
 Playable story .html	story.html	A single self-contained file with the play engine baked in — hand it to readers, host it anywhere, no Loomlight needed
 Outline .md	story.md	Pandoc/Obsidian-friendly Markdown outline of the story tree
-Twee	story.twee	Twine / Tweego format — node types, positions, colors, scene characters and locations, speakers, voices, sub-types and field values are preserved as passage metadata (:: headers), with scene tags exported as Twee 3 tag blocks ([a b c], space-separated — the first tag is the primary jump/choice slug, the rest are free labels, and all of them read back on import). StoryData always carries an IFID — the Twine world's story fingerprint: a v4 UUID in uppercase (per the Twee 3 spec's compiler rule), minted on the first export and kept stable afterwards, so Twine / Tweego recognize the story across exports. The whole library (characters with their attribute grids and traits, locations, items, variables, worldbuilding, voices) and every drawn connection — with its condition, label and ↻/⚡ flags, plus each scene's ⚔ entry requirement, per-choice ⚙ gates and 🎨 tones — ride along in StoryData / passage metadata, so a Twee round-trip keeps the story's logic intact (scene references use a tag only when exactly one scene carries it, otherwise the title). Conditions and effects use Loomlight syntax (has_key == true, @Character Attribute >= 7, roll = 2d6) and are stored as metadata, not Twine macros — Twine opens the file cleanly and other tools ignore the extra keys
+Twee	story.twee	Twine / Tweego format — node types, positions, colors, scene characters and locations, speakers, voices, sub-types and field values are preserved as passage metadata (:: headers), with scene tags exported as Twee 3 tag blocks ([a b c], space-separated — the first tag is the primary jump/choice slug, the rest are free labels, and all of them read back on import).
+
+StoryData always carries an IFID — the Twine world's story fingerprint: a v4 UUID in uppercase (per the Twee 3 spec's compiler rule), minted on the first export and kept stable afterwards, so Twine / Tweego recognize the story across exports. The whole library (characters with their attribute grids and traits, locations, items, variables, worldbuilding, voices) and every drawn connection — with its condition, label and ↻/⚡ flags, plus each scene's ⚔ entry requirement, per-choice ⚙ gates and 🎨 tones — ride along in StoryData / passage metadata, so a Twee interchangeability round-trip keeps the story's logic intact (scene references use a tag only when exactly one scene carries it, otherwise the title). Conditions and effects use Loomlight syntax (has_key == true, @Character Attribute >= 7, roll = 2d6) and are stored as metadata, not Twine macros — Twine opens the file cleanly and other tools ignore the extra keys
 Map image .png	story-map.png	Snapshot of the canvas — cards, bezier edges, choice labels and the start star, rasterized crisp (2× for small maps, capped at 4096 px) — for pitches, wikis and session notes
 Map image .svg	story-map.svg	The same snapshot as an editable vector file
 ⧉ Copy project JSON	clipboard	Quick paste-anywhere backup
 
 ⇧ Import accepts both formats (detected automatically): .json (Loomlight project or bare story JSON) and .twee — Twee import resolves or creates characters and narrative voices, maps type aliases, and re-seeds sub-type field defaults. Import replaces the current story (one undo step can bring it back).
+
 The ◐ Theme toggle switches dark/light and remembers your choice.
 12 · Tools & good practice
-    • ✧ Tidy — auto-layout the map in clean layers, starting from the start node
-    • ✓ Check — consistency report: unreachable scenes, dead ends, broken links, unknown @mentions — each finding has a Show button that jumps to the culprit
-    • Problems panel — the status-bar chip (bottom-left) shows a live error/warning count and opens a persistent, filterable problems list; click any finding to jump straight to the offending scene, and the list refreshes itself as you edit
-    • Red problem dots — scenes with open problems carry a small red dot on the card corner, so you can spot trouble on the map at a glance
-    • Undo is your safety net — 60 steps of everything (structure, text, library, colors)
-    • Write → Check → Play → fix is the intended loop: run ✓ Check before trusting a chapter, and play-test every branch you add
-    • Version your drafts with Save-as on disk or .json exports; keep the latest also as a playable .html for readers
+ 
+ • ✧ Tidy — auto-layout the map in clean layers, starting from the start node
+ 
+ • ✓ Check — consistency report: unreachable scenes, dead ends, broken links, unknown @mentions — each finding has a Show button that jumps to the culprit
+ 
+ • Problems panel — the status-bar chip (bottom-left) shows a live error/warning count and opens a persistent, filterable problems list; click any finding to jump straight to the offending scene, and the list refreshes itself as you edit
+   
+ • Red problem, or warning dots — scenes with open problems carry a small red dot on the card corner, so you can spot trouble on the map at a glance
+ 
+ • Undo is your safety net — 60 steps of everything (structure, text, library, colors)
+ 
+ • Write → Check → Play → fix is the intended loop: run ✓ Check before trusting a chapter, and play-test every branch you add
+ 
+Always version your drafts with Save-as on disk or .json export backups; keep the latest also as a playable .html for readers
+
 Loomlight keeps everything on your local device: stories live in your browser's storage, exports are plain files for easy portability and backup, but nothing is ever uploaded anywhere by the app.
