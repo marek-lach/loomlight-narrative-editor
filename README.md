@@ -1,4 +1,4 @@
-# 🕯️ Loomlight — A graphical branching narrative editor, compatible with [Twine](https://github.com/klembot/twinejs)'s Twee format
+# 🕯️ Loomlight — A graphical branching narrative editor, compatible with [Twine](https://github.com/klembot/twinejs)'s Twee format / open for requests/PRs
 
 _Loomlight_ is a single-file, browser-based editor for writing, mapping out, and playing branching narrative stories: interactive fiction, choose-your-own-adventure stories, visual-novel plots, TTRPG campaign arcs, or any story that forks.
 
