@@ -1,5 +1,5 @@
 # 🕯️ Loomlight — A graphical branching narrative editor, compatible with [Twine](https://github.com/klembot/twinejs)'s Twee format
-Loomlight is a single-file, browser-based editor for writing, mapping out, and playing branching narrative stories: interactive fiction, choose-your-own-adventure stories, visual-novel plots, TTRPG campaign arcs, or any story that forks.
+Loomlight is a single-file, browser-based, local-only editor for writing, mapping out, and playing branching narrative stories: interactive fiction, choose-your-own-adventure stories, visual-novel plots, TTRPG campaign arcs, or any story that forks.
 A user can outline their story as a map of connected scenes, enrich it with a persistent worldbuilding library (characters, places, items, variables, lore, narrative voices), then click Play to walk it exactly as a reader would — with live variables, conditions, and inventory.
 Everything runs locally in your browser. No install, no server, no account, no cloud — your story never leaves your machine.
 1 · Setup
