@@ -1,3 +1,5 @@
+<img width="2560" height="1368" alt="loomlight-zoomed-out-editing" src="https://github.com/user-attachments/assets/76052ec1-98b0-47e9-9a4a-cfeb0327da13" />
+
 # 🕯️ Loomlight — A graphical branching narrative editor, compatible with [Twine](https://github.com/klembot/twinejs)'s Twee format / open for requests/PRs
 
 _Loomlight_ is a single-file, browser-based editor for writing, mapping out, and playing branching narrative stories: interactive fiction, choose-your-own-adventure stories, visual-novel plots, TTRPG campaign arcs, or any story that forks.
@@ -5,6 +7,8 @@ _Loomlight_ is a single-file, browser-based editor for writing, mapping out, and
 A user can outline their story as a map of connected scene nodes. Each scene is a card on an infinite canvas; arrows between cards are the choices the reader can take. There's a persistent worldbuilding library (characters, places, items, variables, lore, narrative voices), then click Play to walk it exactly as a reader would — with live variables, conditions, and inventory.
 
 Everything runs locally in the browser. No install, no server, no account, no cloud — your story never leaves your machine.
+
+<img width="2560" height="1368" alt="loomlight-default" src="https://github.com/user-attachments/assets/f09a2d07-6b79-4390-a661-452ab3903d76" />
 
 1 · Setup
  
