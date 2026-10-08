@@ -2,9 +2,6 @@
 
 _Loomlight_ is a single-file, browser-based editor for writing, mapping out, and playing branching narrative, choice-driven stories: interactive fiction, choose-your-own-adventure stories, visual-novel plots, TTRPG campaign arcs, or any story that needs to fork.
 
-<img width="1600" height="900" alt="view_timeline" src="https://github.com/user-attachments/assets/9d6a8a5b-17de-48ab-8f19-a03fa7c29154" />
-
-
 A user can outline their story as a map of connected scene nodes. Each scene is a card on an infinite canvas; arrows between cards are the choices the reader can take. There's a persistent worldbuilding library (characters, places, items, variables, lore, narrative voices), then click Play to walk it exactly as a reader would — with live variables, conditions, and inventory.
 
 Everything runs locally in the browser. No install, no server, no account, no cloud — your story never leaves your machine.
@@ -17,7 +14,7 @@ Everything runs locally in the browser. No install, no server, no account, no cl
  2. Open it — double-click it, or open it via your browser's File → Open. Any modern browser works (Chrome, Edge, Firefox, Safari).
  3. A small sample story loads on first run so you can explore immediately. Edit or delete it and start your own.
 
-<img width="1600" height="900" alt="view_stats" src="https://github.com/user-attachments/assets/6f1144e0-a072-4b00-ad7a-894a20c04cb9" />
+<img width="1600" height="900" alt="view_timeline" src="https://github.com/user-attachments/assets/9d6a8a5b-17de-48ab-8f19-a03fa7c29154" />
 
 **Help**
 
