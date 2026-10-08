@@ -156,7 +156,8 @@ Both reset on every new playthrough, show as ↻ / ⚡ badges on the map chip, a
 The persistent database for worldbuilding: independent of any scene, it travels with saves and exports.
 Category	What it holds
 
-💬 Characters	Name, color, role, portrait initials, description, goals, flaw, abilities, an attribute grid (per-character stats like Courage: 8, readable from any condition as @Name Attribute), traits (cross-character tags — see below), a Main / Secondary / Casual importance category, and an Encounter field that can @mention other entities
+💬 Characters	Name, color, role, portrait initials, description, goals, flaw, abilities, an attribute grid (per-character stats like Courage: 8, readable from any condition as @Name Attribute), per-attribute **tier tables** (⚖ — min → label ladders like `0 Cold · 4 Wary · 7 Warm · 9 Devoted`, so a raw number reads as a story label in gates: `@Name Attribute == Label` matches the label, ordering operators compare rungs), **traits** (cross-character tags — see below), 
+a Main / Secondary / Casual importance category, and an Encounter field that can @mention other entities
 
 📍 Locations - Places — name, color, free-form links to other places
 
@@ -186,7 +187,9 @@ View	Key	What it shows
 
 ▥ Beat	B	Per-scene table: # / Title / Beat / Act / POV / Date / Tension (0–10 bar) / Words / Status
 
-📇 Char	C	Printable character profile cards, two per row — each card lists the scenes the character takes part in (speaker, POV, or @mention), clickable to jump to the map
+📇 Char	C	Printable character profile cards, two per row — each card lists the scenes the character takes part in (speaker, POV, or @mention), clickable to jump to the map and
+
+**🤝 Relationships** — a sortable cast roster where every tiered attribute becomes a column showing each character's value and tier chip (e.g. `7 Warm`), alongside Role class, 📍 Location and scene count. Click a column header to sort (click again to reverse; blank cells always sink), click a row to edit that character
 
 📜 Script	R	A linear, read-only read of the whole story in timeline order — body text, spoken dialogue cues, screenplay quotes, choice lists (▸ label → target) and Go to: jumps, all in one scroll. Click any scene card to open it on the map
 
