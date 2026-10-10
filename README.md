@@ -1,5 +1,7 @@
 # 🕯️ Loomlight — A graphical branching narrative editor
 
+<img width="2560" height="1368" alt="loomlight_main_view" src="https://github.com/user-attachments/assets/77e0f7f1-521b-4d56-ae3e-5c881023a8e4" />
+
 **Loomlight** is a single-file, browser-based studio for writing, mapping out, and playing **branching narratives** — interactive fiction, choose-your-own-adventure stories, visual-novel plots, TTRPG campaign arcs, or any story that needs to fork.
 
 A user can outline and write their story as **a map of connected scene nodes**. Each scene is a card on an infinite canvas; arrows between cards are the choices the reader can take. There's a persistent **worldbuilding library** (for denoting *characters*, *places*, *items*, *variable conditions*, *lore*, or narrative voices), then you can click **Play** to walk through it exactly as a reader would: with live variables, conditions, and inventory.
@@ -14,15 +16,15 @@ Everything runs **locally in your browser**. No install, no server, no account, 
 
 3. **That's it.** A small sample story loads on first run so you can explore immediately. Edit or delete it and start your own.
 
-> **Where is my data? — and how is it protected?** Your story **autosaves to your browser's local storage** after every change — the `✓ autosave` chip confirms each save; it warns `⚠ autosave off` if storage is blocked or full, and shows `⏸ autosave paused` while another tab owns the session. Writes are debounced (~300 ms), so a burst of typing costs one save, not one per keystroke; closing or hiding the tab always flushes immediately.
+**Where is my data?** Your story **autosaves to your browser's local storage** after every change — the `✓ autosave` chip confirms each save; it warns `⚠ autosave off` if storage is blocked or full, and shows `⏸ autosave paused` while another tab owns the session. Writes are debounced (~300 ms), so a burst of typing costs one save, not one per keystroke; closing or hiding the tab always flushes immediately.
 
-> - **Versioned save format** — saves carry a format version (`v2`), so future Loomlight updates can migrate old saves instead of losing them.
+**A versioned save format** — saves carry a format version (`v2`), so future Loomlight updates can migrate old saves instead of losing them.
 
-> - **Safety backup ring** — every 20th save, a story-only snapshot rotates into five backup slots (`loomlight.backup.1` … `.5`). If the primary save (`loomlight.project.v1`) is ever unreadable, Loomlight recovers your story from the newest backup and re-saves it automatically.
+**Safety backup ring** — every 20th save, a story-only snapshot rotates into five backup slots (`loomlight.backup.1` … `.5`). If the primary save (`loomlight.project.v1`) is ever unreadable, Loomlight recovers your story from the newest backup and re-saves it automatically.
 
 > - **Multi-tab lock** — opening the story in two tabs is the classic way browser-studio work gets overwritten. The first tab owns a session lock (`loomlight.lock.v1`); a second tab is warned at startup, and only the lock holder writes. A stale lock (crashed tab) is reclaimed automatically after ~6 seconds.
 
-> - **Save on hide** — changes persist not only on exit, but the moment the tab is hidden (mobile browsers can kill tabs without warning).
+**Save on hide** — changes persist not only on exit, but the moment the tab is hidden (mobile browsers can kill tabs without warning).
 
 > Layout, zoom level, and the snap toggle are restored on reload (theme lives in `loomlight.theme`). Local storage is still tied to this browser on this machine — **export a `.json` backup regularly**, especially before switching browsers or clearing site data.
 
@@ -188,6 +190,7 @@ Switch with the toolbar tabs or their keys. All views read the same scene fields
 | **📖 Reading order** | `E` | The story as the **reader** will meet it — a numbered, gamebook-style walk from the start scene through every exit (choices, connections, `[[links]]`, jumps, condition branches); each page cross-references the page its exits lead to, and scenes no exit reaches are listed at the bottom. Exits marked 🧵 **main path** read **bold gold**, so the spine of the story stands out from the branches. Pages reached by more than one route carry a gold **↺ re-entered** chip, and an exit that loops back into an already-reached page reads **↺ p.N again** — loops and merges stay visible instead of deduping silently. **▶ Run** plays from the start; **⇅ Re-sort** restamps the timeline order with this reading order |
 | **📊 Stats** | `P` | Summary cards, cumulative words-over-time line chart, words-per-scene bar chart |
 
+<img width="1600" height="900" alt="loomlight__outline_beat_view" src="https://github.com/user-attachments/assets/704140b0-33a2-4e80-af6e-033b7922ae55" />
 
 ### 🏷 Traits — a cross-character vocabulary
 
