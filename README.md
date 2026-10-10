@@ -1,4 +1,4 @@
-# 🕯️ Loomlight — A graphical branching narrative editor
+# 🕯️ Loomlight — A visual branching narrative editor, compatible with [Twine](https://github.com/klembot/twinejs)'s .twee format 
 
 <img width="2560" height="1368" alt="loomlight_main_view" src="https://github.com/user-attachments/assets/77e0f7f1-521b-4d56-ae3e-5c881023a8e4" />
 
@@ -170,10 +170,11 @@ The persistent worldbuilding database — independent of any scene, it travels w
 | **🌍 Worldbuilding** | Free-form named entries (history, geography, culture, magic…) with renameable, reorderable name/value field pairs |
 | **🎙 Narrative Voices** | The "who is telling" — narrators, chroniclers, in-world documents. Assign one in an Exposition scene; its color tints the card and labels the scene in Play mode |
 
-
 Select any entry to edit it in the inspector — or **right-click** it for Rename (`F2`), ⧉ Duplicate and ✕ Delete (see §10). The **📇 Char** view prints every character profile as a card — handy for TTRPG session handouts.
 
-## 7 · Ten views — one story
+<img width="2558" height="1364" alt="loomlight_library_view" src="https://github.com/user-attachments/assets/65ea3442-fe4f-43fb-8b9d-2578655e37f8" />
+
+## 7 · Ten views on one story
 
 Switch with the toolbar tabs or their keys. All views read the same scene fields — every change applies everywhere.
 
