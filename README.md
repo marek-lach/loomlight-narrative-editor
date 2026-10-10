@@ -1,4 +1,4 @@
-# 🕯️ Loomlight — Branching Narrative Studio
+# 🕯️ Loomlight — A graphical branching narrative editor
 
 **Loomlight** is a single-file, browser-based studio for writing, mapping out, and playing **branching narratives** — interactive fiction, choose-your-own-adventure stories, visual-novel plots, TTRPG campaign arcs, or any story that needs to fork.
 
