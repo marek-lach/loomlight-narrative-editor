@@ -2,7 +2,7 @@
 
 <img width="2560" height="1368" alt="loomlight_main_view" src="https://github.com/user-attachments/assets/77e0f7f1-521b-4d56-ae3e-5c881023a8e4" />
 
-**Loomlight** is a single-file, browser-based studio for writing, mapping out, and playing **branching narratives** — interactive fiction, choose-your-own-adventure stories, visual-novel plots, TTRPG campaign arcs, or any story that needs to fork.
+**Loomlight** is a local, single-file, browser-based editor for writing, mapping out, and playing through **branching narrative stories**: interactive fiction, choose-your-own text adventures, visual-novel plots, TTRPG campaign arcs, or any story that needs to fork.
 
 A user can outline and write their story as **a map of connected scene nodes**. Each scene is a card on an infinite canvas; arrows between cards are the choices the reader can take. There's a persistent **worldbuilding library** (for denoting *characters*, *places*, *items*, *variable conditions*, *lore*, or narrative voices), then you can click **Play** to walk through it exactly as a reader would: with live variables, conditions, and inventory.
 
