@@ -1,4 +1,4 @@
-# 🕯️ Loomlight — A visual branching narrative editor, to help you with writing sprawling choice-driven stories, compatible with [Twine](https://github.com/klembot/twinejs)'s .twee format 
+# 🕯️ Loomlight — A visual branching narrative editor, to help you write sprawling choice-driven stories, compatible with [Twine](https://github.com/klembot/twinejs)'s .twee format 
 
 <img width="2560" height="1368" alt="loomlight_main_view" src="https://github.com/user-attachments/assets/77e0f7f1-521b-4d56-ae3e-5c881023a8e4" />
 
